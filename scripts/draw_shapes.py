@@ -130,7 +130,7 @@ add("n-mosfet", "N-channel MOSFET", "N-Kanal-MOSFET", "NMOS enhancement field ef
     "M0 24 L14 24 M14 12 L14 36 M20 11 L20 18 M20 21 L20 27 M20 30 L20 37 "
     "M20 14 L32 14 L32 0 M20 34 L32 34 L32 48 M32 34 L32 24 L21 24 M25 21 L21 24 L25 27")
 add("junction", "Junction dot", "Verbindungspunkt", "node connected wires", "Knoten Leiter Kreuzung", 24, 24,
-    "M0 12 L24 12 M12 0 L12 24", ellipse(9, 9, 6, fill="#20242c"))
+    "M0 12 L24 12 M12 0 L12 24", ellipse(9, 9, 6, fill="pen"))
 add("terminal", "Terminal", "Anschlussklemme", "open terminal pin connector", "Klemme Anschluss Pin", 32, 24,
     "M0 12 L22 12", ellipse(22, 7, 10))
 

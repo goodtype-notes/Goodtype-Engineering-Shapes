@@ -4,7 +4,7 @@ from zipfile import ZIP_STORED, ZipFile, ZipInfo
 
 from validate import ROOT, validate
 
-PACKAGE_NAME = "Goodtype-Engineering-Shapes"
+PACKAGE_NAME = "goodtype-engineering-shapes"
 
 
 def package():
