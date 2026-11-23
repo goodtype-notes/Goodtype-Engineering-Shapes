@@ -130,8 +130,13 @@ def save(name, w, h, fragments, *, store=False, scale=1):
         page.get_pixmap(matrix=pymupdf.Matrix(scale*w/page.rect.width, scale*h/page.rect.height)).save(path)
 
 
-def shape_tile(item, x, y, scale, strings, size):
+def shape_tile(item, x, y, scale, strings, size, *, show_ports=False):
     drawing = "".join(draw_object(obj) for obj in item["objects"])
+    if show_ports:
+        drawing += "".join(
+            f'<circle cx="{px}" cy="{py}" r="2.3" fill="{PAPER}" stroke="#00699c" stroke-width="1.1"/>'
+            for px, py in map(point, item.get("ports", []))
+        )
     return (group(drawing, x-item["widthPt"]*scale/2, y-item["heightPt"]*scale/2, scale)
             + text(x, y+38*scale, strings[item["label"]], size, MUTED, center=True))
 
@@ -144,7 +149,7 @@ def shape_sheets(libraries, strings):
         parts = [rect(0, 0, 1200, height, PAPER), text(40, 64, strings[library["label"]], 36, bold=True)]
         for index, item in enumerate(items):
             x, y = step_x*(index%columns + .5), 155+step_y*(index//columns)
-            parts.append(shape_tile(item, x, y, 1.65, strings, 17))
+            parts.append(shape_tile(item, x, y, 1.65, strings, 17, show_ports=True))
         save(library["id"], 1200, height, parts)
 
     parts = [rect(0, 0, 1600, 1000, PAPER), text(120, 154, strings["name"], 77, bold=True),

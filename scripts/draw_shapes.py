@@ -232,6 +232,58 @@ add("thermometer", "Thermometer", "Thermometer", "temperature bulb scale", "Temp
     "M15 48 L15 20 M20 15 L26 15 M20 22 L24 22 M20 29 L26 29 M20 36 L24 36",
     ellipse(12,47,6))
 
+# Item-local terminals in stable order. Circuit and logic terminals are open
+# path endpoints on the item's edge. Other symbols use explicit anchors.
+PORTS = {
+    "fixed-support": [(48, 20)],
+    "pin-support": [(24, 0)],
+    "roller-support": [(24, 0)],
+    "force-arrow": [(0, 12), (48, 12)],
+    "distributed-load": [(0, 32), (56, 32)],
+    "spring": [(0, 12), (56, 12)],
+    "damper": [(0, 12), (56, 12)],
+    "mass-block": [(24, 4), (44, 16), (24, 28), (4, 16)],
+    "pulley": [(24, 0), (8, 48), (40, 48)],
+    "beam": [(0, 12), (56, 12)],
+    "process": [(32, 2), (62, 20), (32, 38), (2, 20)],
+    "decision": [(32, 0), (64, 20), (32, 40), (0, 20)],
+    "terminator": [(32, 4), (62, 20), (32, 36), (2, 20)],
+    "input-output": [(38, 2), (57, 20), (26, 38), (7, 20)],
+    # The bottom anchor is the exact cubic midpoint (t = 0.5).
+    "document": [(32, 3), (61, 17.5), (33.125, 32.625), (3, 18.5)],
+    "connector": [(20, 5), (35, 20), (20, 35), (5, 20)],
+    "flow-arrow": [(0, 12), (48, 12)],
+    "burette": [(16, 61)],
+    "bunsen-burner": [(39, 50.5)],
+}
+
+
+def terminals(item):
+    w, h = item["widthPt"], item["heightPt"]
+    ends = set()
+    for obj in item["objects"]:
+        geometry = obj["geometry"]
+        if geometry["kind"] == "line":
+            anchors = [geometry["start"], geometry["end"]]
+        elif geometry["kind"] == "spline" and not geometry["closed"]:
+            nodes = geometry["nodes"]
+            anchors = [nodes[0]["point"], nodes[-1]["point"]]
+        else:
+            continue
+        for anchor in anchors:
+            x, y = obj["x"] + anchor["x"], obj["y"] + anchor["y"]
+            if x in (0, w) or y in (0, h):
+                ends.add((x, y))
+    return sorted(ends)
+
+
+for key, data in LIBRARIES.items():
+    for item in data["items"]:
+        ports = terminals(item) if key in ("circuits", "logic") else PORTS.get(item["id"])
+        if ports:
+            item["ports"] = [point(x, y) for x, y in ports]
+
+
 def write(path, value):
     target = ROOT / path
     target.parent.mkdir(parents=True, exist_ok=True)

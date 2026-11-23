@@ -62,6 +62,20 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid number"):
             validate(self.root, report=False)
 
+    def test_item_ports_accept_stroke_allowance_and_reject_invalid_values(self):
+        path = self.manifest["contents"]["shapes"][0]
+        data = json.loads((self.root / path).read_text(encoding="utf-8"))
+        item = data["items"][0]
+        item["ports"] = [{"x": -0.5, "y": 12}]
+        self.save(path, data)
+        validate(self.root, report=False)
+        for ports in ([{"x": -0.51, "y": 12}], [{"x": "NaN", "y": 12}], item["ports"] * 33):
+            with self.subTest(ports=ports):
+                item["ports"] = ports
+                self.save(path, data)
+                with self.assertRaises(ValueError):
+                    validate(self.root, report=False)
+
     def test_relative_handles_determine_curve_bounds(self):
         g = dict(kind="spline", closed=False, nodes=[
             {"point": {"x": 10, "y": 4}, "handleOut": {"x": 4, "y": -8}},

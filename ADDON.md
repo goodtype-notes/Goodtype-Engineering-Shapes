@@ -13,3 +13,5 @@ Put standard technical symbols straight onto a Goodtype page. Pick a drawing fro
 ## Use in Goodtype
 
 Install the pack from **Addons**, then open **Insert shape** on a page. Browse the libraries or search by name. Symbols follow your pen’s outline colour and weight when inserted. You can move or resize them as ordinary Goodtype objects.
+
+When the Connectors addon is enabled, snap to component leads, flowchart edges and selected mechanical or laboratory attachment points.

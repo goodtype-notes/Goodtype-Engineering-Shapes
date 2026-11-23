@@ -246,13 +246,19 @@ def validate(root=ROOT, *, report=True):
                     counts["libraries"] += 1
                     item_ids = set()
                     for item in seq(data["items"], 1, 512):
-                        keys(item, "id label search widthPt heightPt objects")
+                        keys(item, "id label search widthPt heightPt objects", "ports")
                         add_id(item_ids, identifier(item["id"]))
                         label(item["label"])
                         label(item["search"])
                         w, h = (positive(item[key], 100_000) for key in ("widthPt", "heightPt"))
                         for obj in seq(item["objects"], 1, 64):
                             shape_object(obj, w, h)
+                        half_stroke = max((obj["style"].get("strokeWidthPt", 1)/2
+                                           for obj in item["objects"] if obj["type"] == "shape"), default=0)
+                        for port in seq(item.get("ports", []), 0, 32):
+                            x, y = point(port)
+                            number(x, -half_stroke, w + half_stroke)
+                            number(y, -half_stroke, h + half_stroke)
                         counts["shapes"] += 1
                 else:
                     keys(data, kind)
