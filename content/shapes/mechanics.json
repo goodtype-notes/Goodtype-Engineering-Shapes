@@ -1,0 +1,1460 @@
+{
+  "id": "mechanics",
+  "label": "lib-mechanics",
+  "items": [
+    {
+      "id": "fixed-support",
+      "label": "fixed-support",
+      "search": "fixed-support-search",
+      "widthPt": 48,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 3.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 34.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 20.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 32.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 5.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 11.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 17.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 23.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 29.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 35.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -8.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "pin-support",
+      "label": "pin-support",
+      "search": "pin-support-search",
+      "widthPt": 48,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 24.0,
+          "y": 0.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 10.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 24.0,
+                  "y": 10.0
+                }
+              },
+              {
+                "point": {
+                  "x": 10.0,
+                  "y": 32.0
+                }
+              },
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 32.0
+                }
+              }
+            ],
+            "closed": true
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 7.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 34.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 12.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 20.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 28.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 36.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "roller-support",
+      "label": "roller-support",
+      "search": "roller-support-search",
+      "widthPt": 48,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 24.0,
+          "y": 0.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 8.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 24.0,
+                  "y": 8.0
+                }
+              },
+              {
+                "point": {
+                  "x": 10.0,
+                  "y": 25.0
+                }
+              },
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 25.0
+                }
+              }
+            ],
+            "closed": true
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 7.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 34.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 12.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 20.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 28.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 36.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 12,
+          "y": 25,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 7,
+            "heightPt": 7
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 20.5,
+          "y": 25,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 7,
+            "heightPt": 7
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 29,
+          "y": 25,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 7,
+            "heightPt": 7
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "force-arrow",
+      "label": "force-arrow",
+      "search": "force-arrow-search",
+      "widthPt": 48,
+      "heightPt": 24,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0.0,
+          "y": 12.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 48.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 39.0,
+                  "y": 7.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 12.0
+                }
+              },
+              {
+                "point": {
+                  "x": 39.0,
+                  "y": 17.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "moment-arrow",
+      "label": "moment-arrow",
+      "search": "moment-arrow-search",
+      "widthPt": 44,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 35.0,
+                  "y": 29.0
+                },
+                "handleOut": {
+                  "x": 9.0,
+                  "y": -15.0
+                }
+              },
+              {
+                "point": {
+                  "x": 22.0,
+                  "y": 4.0
+                },
+                "handleIn": {
+                  "x": 10.0,
+                  "y": 0.0
+                },
+                "handleOut": {
+                  "x": -12.0,
+                  "y": 0.0
+                }
+              },
+              {
+                "point": {
+                  "x": 6.0,
+                  "y": 23.0
+                },
+                "handleIn": {
+                  "x": -2.0,
+                  "y": -10.0
+                },
+                "handleOut": {
+                  "x": 2.0,
+                  "y": 8.0
+                }
+              },
+              {
+                "point": {
+                  "x": 22.0,
+                  "y": 36.0
+                },
+                "handleIn": {
+                  "x": -8.0,
+                  "y": 0.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 15.0,
+                  "y": 30.0
+                }
+              },
+              {
+                "point": {
+                  "x": 22.0,
+                  "y": 36.0
+                }
+              },
+              {
+                "point": {
+                  "x": 14.0,
+                  "y": 39.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "distributed-load",
+      "label": "distributed-load",
+      "search": "distributed-load-search",
+      "widthPt": 56,
+      "heightPt": 36,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 8.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 40.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0.0,
+          "y": 32.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 56.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 8.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 22.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 5.0,
+                  "y": 22.0
+                }
+              },
+              {
+                "point": {
+                  "x": 8.0,
+                  "y": 26.0
+                }
+              },
+              {
+                "point": {
+                  "x": 11.0,
+                  "y": 22.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 18.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 22.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 15.0,
+                  "y": 22.0
+                }
+              },
+              {
+                "point": {
+                  "x": 18.0,
+                  "y": 26.0
+                }
+              },
+              {
+                "point": {
+                  "x": 21.0,
+                  "y": 22.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 28.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 22.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 25.0,
+                  "y": 22.0
+                }
+              },
+              {
+                "point": {
+                  "x": 28.0,
+                  "y": 26.0
+                }
+              },
+              {
+                "point": {
+                  "x": 31.0,
+                  "y": 22.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 38.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 22.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 35.0,
+                  "y": 22.0
+                }
+              },
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 26.0
+                }
+              },
+              {
+                "point": {
+                  "x": 41.0,
+                  "y": 22.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 48.0,
+          "y": 4.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 22.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 45.0,
+                  "y": 22.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 26.0
+                }
+              },
+              {
+                "point": {
+                  "x": 51.0,
+                  "y": 22.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "label": "spring",
+      "search": "spring-search",
+      "widthPt": 56,
+      "heightPt": 24,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 0.0,
+                  "y": 12.0
+                }
+              },
+              {
+                "point": {
+                  "x": 10.0,
+                  "y": 12.0
+                }
+              },
+              {
+                "point": {
+                  "x": 14.0,
+                  "y": 4.0
+                }
+              },
+              {
+                "point": {
+                  "x": 20.0,
+                  "y": 20.0
+                }
+              },
+              {
+                "point": {
+                  "x": 26.0,
+                  "y": 4.0
+                }
+              },
+              {
+                "point": {
+                  "x": 32.0,
+                  "y": 20.0
+                }
+              },
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 4.0
+                }
+              },
+              {
+                "point": {
+                  "x": 44.0,
+                  "y": 20.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 12.0
+                }
+              },
+              {
+                "point": {
+                  "x": 56.0,
+                  "y": 12.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "damper",
+      "label": "damper",
+      "search": "damper-search",
+      "widthPt": 56,
+      "heightPt": 24,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0.0,
+          "y": 12.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 24.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 24.0,
+          "y": 5.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 14.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 17.0,
+                  "y": 3.0
+                }
+              },
+              {
+                "point": {
+                  "x": 39.0,
+                  "y": 3.0
+                }
+              },
+              {
+                "point": {
+                  "x": 39.0,
+                  "y": 21.0
+                }
+              },
+              {
+                "point": {
+                  "x": 17.0,
+                  "y": 21.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 39.0,
+          "y": 12.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 17.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "mass-block",
+      "label": "mass-block",
+      "search": "mass-block-search",
+      "widthPt": 48,
+      "heightPt": 32,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 18.0,
+          "y": 21.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": -9.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 18.0,
+                  "y": 16.0
+                },
+                "handleOut": {
+                  "x": 1.0,
+                  "y": -5.0
+                }
+              },
+              {
+                "point": {
+                  "x": 24.0,
+                  "y": 16.0
+                },
+                "handleIn": {
+                  "x": 0.0,
+                  "y": -5.0
+                }
+              },
+              {
+                "point": {
+                  "x": 24.0,
+                  "y": 21.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 24.0,
+                  "y": 16.0
+                },
+                "handleOut": {
+                  "x": 1.0,
+                  "y": -5.0
+                }
+              },
+              {
+                "point": {
+                  "x": 30.0,
+                  "y": 16.0
+                },
+                "handleIn": {
+                  "x": 0.0,
+                  "y": -5.0
+                }
+              },
+              {
+                "point": {
+                  "x": 30.0,
+                  "y": 21.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 4,
+          "y": 4,
+          "geometry": {
+            "kind": "rectangle",
+            "widthPt": 40,
+            "heightPt": 24,
+            "cornerRadiusPt": 0
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "pulley",
+      "label": "pulley",
+      "search": "pulley-search",
+      "widthPt": 48,
+      "heightPt": 48,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 24.0,
+          "y": 0.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 8.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 8.0,
+          "y": 24.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 24.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 40.0,
+          "y": 24.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 24.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 8,
+          "y": 8,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 32,
+            "heightPt": 32
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 21,
+          "y": 21,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 6,
+            "heightPt": 6
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "beam",
+      "label": "beam",
+      "search": "beam-search",
+      "widthPt": 56,
+      "heightPt": 24,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 8,
+          "geometry": {
+            "kind": "rectangle",
+            "widthPt": 56,
+            "heightPt": 8,
+            "cornerRadiusPt": 0
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "axes",
+      "label": "axes",
+      "search": "axes-search",
+      "widthPt": 48,
+      "heightPt": 48,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 8.0,
+                  "y": 0.0
+                }
+              },
+              {
+                "point": {
+                  "x": 8.0,
+                  "y": 40.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 40.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 4.0,
+                  "y": 7.0
+                }
+              },
+              {
+                "point": {
+                  "x": 8.0,
+                  "y": 0.0
+                }
+              },
+              {
+                "point": {
+                  "x": 12.0,
+                  "y": 7.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 41.0,
+                  "y": 36.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 40.0
+                }
+              },
+              {
+                "point": {
+                  "x": 41.0,
+                  "y": 44.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 16.0,
+          "y": 5.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 3.0,
+              "y": 5.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 22.0,
+          "y": 5.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -5.0,
+              "y": 9.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 36.0,
+          "y": 29.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 6.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 42.0,
+          "y": 29.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -6.0,
+              "y": 6.0
+            }
+          },
+          "style": {}
+        }
+      ]
+    }
+  ]
+}

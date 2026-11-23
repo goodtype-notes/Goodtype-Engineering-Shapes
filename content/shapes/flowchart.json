@@ -1,0 +1,267 @@
+{
+  "id": "flowchart",
+  "label": "lib-flowchart",
+  "items": [
+    {
+      "id": "process",
+      "label": "process",
+      "search": "process-search",
+      "widthPt": 64,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 2,
+          "y": 2,
+          "geometry": {
+            "kind": "rectangle",
+            "widthPt": 60,
+            "heightPt": 36,
+            "cornerRadiusPt": 0
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "decision",
+      "label": "decision",
+      "search": "decision-search",
+      "widthPt": 64,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 32.0,
+                  "y": 0.0
+                }
+              },
+              {
+                "point": {
+                  "x": 64.0,
+                  "y": 20.0
+                }
+              },
+              {
+                "point": {
+                  "x": 32.0,
+                  "y": 40.0
+                }
+              },
+              {
+                "point": {
+                  "x": 0.0,
+                  "y": 20.0
+                }
+              }
+            ],
+            "closed": true
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "terminator",
+      "label": "terminator",
+      "search": "terminator-search",
+      "widthPt": 64,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 2,
+          "y": 4,
+          "geometry": {
+            "kind": "rectangle",
+            "widthPt": 60,
+            "heightPt": 32,
+            "cornerRadiusPt": 16
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "input-output",
+      "label": "input-output",
+      "search": "input-output-search",
+      "widthPt": 64,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 13.0,
+                  "y": 2.0
+                }
+              },
+              {
+                "point": {
+                  "x": 63.0,
+                  "y": 2.0
+                }
+              },
+              {
+                "point": {
+                  "x": 51.0,
+                  "y": 38.0
+                }
+              },
+              {
+                "point": {
+                  "x": 1.0,
+                  "y": 38.0
+                }
+              }
+            ],
+            "closed": true
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "document",
+      "label": "document",
+      "search": "document-search",
+      "widthPt": 64,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 3.0,
+                  "y": 3.0
+                }
+              },
+              {
+                "point": {
+                  "x": 61.0,
+                  "y": 3.0
+                }
+              },
+              {
+                "point": {
+                  "x": 61.0,
+                  "y": 32.0
+                },
+                "handleOut": {
+                  "x": -19.0,
+                  "y": -11.0
+                }
+              },
+              {
+                "point": {
+                  "x": 3.0,
+                  "y": 34.0
+                },
+                "handleIn": {
+                  "x": 22.0,
+                  "y": 10.0
+                }
+              }
+            ],
+            "closed": true
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "connector",
+      "label": "connector",
+      "search": "connector-search",
+      "widthPt": 40,
+      "heightPt": 40,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 5,
+          "y": 5,
+          "geometry": {
+            "kind": "ellipse",
+            "widthPt": 30,
+            "heightPt": 30
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "id": "flow-arrow",
+      "label": "flow-arrow",
+      "search": "flow-arrow-search",
+      "widthPt": 48,
+      "heightPt": 24,
+      "objects": [
+        {
+          "type": "shape",
+          "x": 0.0,
+          "y": 12.0,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 48.0,
+              "y": 0.0
+            }
+          },
+          "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "geometry": {
+            "kind": "spline",
+            "nodes": [
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 6.0
+                }
+              },
+              {
+                "point": {
+                  "x": 48.0,
+                  "y": 12.0
+                }
+              },
+              {
+                "point": {
+                  "x": 38.0,
+                  "y": 18.0
+                }
+              }
+            ],
+            "closed": false
+          },
+          "style": {}
+        }
+      ]
+    }
+  ]
+}
