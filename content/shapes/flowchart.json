@@ -318,14 +318,14 @@
     {
       "id": "flow-arrow",
       "label": "flow-arrow",
-      "search": "flow-arrow-search",
+      "search": "double-arrow-search",
       "widthPt": 48,
       "heightPt": 24,
       "objects": [
         {
           "type": "shape",
-          "x": 0.0,
-          "y": 12.0,
+          "x": 0,
+          "y": 12,
           "geometry": {
             "kind": "line",
             "start": {
@@ -333,41 +333,52 @@
               "y": 0
             },
             "end": {
-              "x": 48.0,
-              "y": 0.0
+              "x": 48,
+              "y": 0
             }
           },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "x": 0,
+          "y": 12
         },
+        {
+          "x": 48,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "id": "double-arrow",
+      "label": "double-arrow",
+      "search": "double-arrow-search",
+      "widthPt": 48,
+      "heightPt": 24,
+      "objects": [
         {
           "type": "shape",
           "x": 0,
-          "y": 0,
+          "y": 12,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 38.0,
-                  "y": 6.0
-                }
-              },
-              {
-                "point": {
-                  "x": 48.0,
-                  "y": 12.0
-                }
-              },
-              {
-                "point": {
-                  "x": 38.0,
-                  "y": 18.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 48,
+              "y": 0
+            }
           },
-          "style": {}
+          "style": {
+            "startCap": "arrow",
+            "endCap": "arrow"
+          }
         }
       ],
       "ports": [

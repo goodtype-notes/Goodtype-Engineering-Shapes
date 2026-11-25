@@ -102,6 +102,27 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid number"):
             shape_object(label | {"x": -25}, 48, 16)
 
+    def test_shape_caps_match_geometry_and_enum(self):
+        point = lambda x, y: {"x": x, "y": y}
+        nodes = [{"point": point(2, 2)}, {"point": point(10, 2)}, {"point": point(6, 10)}]
+        geometries = [
+            (dict(kind="line", start=point(2, 2), end=point(10, 2)), True),
+            (dict(kind="spline", nodes=nodes, closed=False), True),
+            (dict(kind="spline", nodes=nodes, closed=True), False),
+            (dict(kind="ellipse", widthPt=10, heightPt=10), False),
+            (dict(kind="rectangle", widthPt=10, heightPt=10, cornerRadiusPt=0), False),
+        ]
+        for geometry, supports_caps in geometries:
+            for key in ("startCap", "endCap"):
+                for cap in ("none", "arrow", "open", "dot", "bar", "triangle", None, []):
+                    with self.subTest(geometry=geometry, key=key, cap=cap):
+                        obj = dict(type="shape", x=0, y=0, geometry=geometry, style={key: cap})
+                        if cap == "none" or (supports_caps and cap in ("arrow", "open", "dot", "bar")):
+                            shape_object(obj, 12, 12)
+                        else:
+                            with self.assertRaisesRegex(ValueError, "[Cc]ap"):
+                                shape_object(obj, 12, 12)
+
     def test_package_is_reproducible_and_extracted_content_validates(self):
         archive = package()
         expected = hashlib.sha256(archive.read_bytes()).hexdigest()

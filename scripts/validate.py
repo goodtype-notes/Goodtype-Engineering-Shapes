@@ -136,7 +136,7 @@ def shape_object(obj, w, h):
         for coordinate in values:
             number(offset + coordinate, -1e-9, extent + 1e-9)
     style = obj["style"]
-    keys(style, "", "strokeColor strokeWidthPt fillColor opacity pattern patternSpacing patternOffsetPt")
+    keys(style, "", "strokeColor strokeWidthPt fillColor opacity pattern patternSpacing patternOffsetPt startCap endCap")
     if "strokeColor" in style:
         color(style["strokeColor"])
     if style.get("fillColor") not in (None, "pen"):
@@ -146,6 +146,13 @@ def shape_object(obj, w, h):
     require(style.get("pattern", "solid") in ("solid", "dashed", "dotted"), "Invalid stroke pattern")
     number(style.get("patternSpacing", 1), 0.5, 3)
     number(style.get("patternOffsetPt", 0), 0, 1e6)
+    geometry = obj["geometry"]
+    for key in ("startCap", "endCap"):
+        cap = style.get(key, "none")
+        require(cap in ("none", "arrow", "open", "dot", "bar"), f"Invalid shape cap: {key}")
+        require(cap == "none" or geometry["kind"] == "line"
+                or (geometry["kind"] == "spline" and not geometry["closed"]),
+                "Shape caps require a line or an open spline")
 
 
 def template(value, prefix):

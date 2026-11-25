@@ -31,18 +31,56 @@ def svg_line(x1, y1, x2, y2, color, weight):
     return f'<path d="M{x1} {y1}L{x2} {y2}" stroke="{color}" stroke-width="{weight}"/>'
 
 
+def draw_cap(cap, anchor, neighbor, handle, stroke, width):
+    x, y = anchor
+    if cap == "none":
+        return anchor, ""
+    if cap == "dot":
+        return anchor, f'<circle cx="{x}" cy="{y}" r="{width * 1.5}" fill="{stroke}"/>'
+    dx, dy = point(handle) if handle else (0, 0)
+    if not (dx or dy):
+        dx, dy = neighbor[0] - x, neighbor[1] - y
+    length = math.hypot(dx, dy)
+    if length == 0:
+        return anchor, ""
+    dx, dy = dx / length, dy / length
+    head_length = 0 if cap == "bar" else 5 * width
+    cx, cy = x + dx * head_length, y + dy * head_length
+    half_width = 2.5 * width
+    a, b = (cx - dy * half_width, cy + dx * half_width), (cx + dy * half_width, cy - dx * half_width)
+    if cap == "arrow":
+        drawing = f'<path d="M{x} {y} L{a[0]} {a[1]} L{b[0]} {b[1]} Z" fill="{stroke}"/>'
+        trim = min(width, math.dist(anchor, neighbor) / 3)
+        return (x + dx * trim, y + dy * trim), drawing
+    path = f"M{a[0]} {a[1]} L{x} {y} L{b[0]} {b[1]}"
+    return anchor, (f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="{width}" '
+                    'stroke-linecap="round" stroke-linejoin="round"/>')
+
+
 def draw_object(obj):
     if obj["type"] != "shape":
         raise ValueError("This pack's preview supports vector drawings only")
     g, style = obj["geometry"], obj["style"]
     stroke = style.get("strokeColor", INK)
     fill = style.get("fillColor") or "none"
-    attrs = (f'fill="{fill}" stroke="{stroke}" stroke-width="{style.get("strokeWidthPt", 1.35)}" '
-             f'opacity="{style.get("opacity", 1)}" stroke-linecap="round" stroke-linejoin="round"')
+    width = style.get("strokeWidthPt", 1.35)
+    attrs = (f'fill="{fill}" stroke="{stroke}" stroke-width="{width}" '
+             'stroke-linecap="round" stroke-linejoin="round"')
     kind = g["kind"]
+    caps = []
+
+    def capped_ends(positions, start_handle=None, end_handle=None):
+        trimmed = positions.copy()
+        for key, index, adjacent, handle in (
+            ("startCap", 0, 1, start_handle), ("endCap", -1, -2, end_handle)
+        ):
+            trimmed[index], cap = draw_cap(style.get(key, "none"), positions[index], positions[adjacent],
+                                          handle, stroke, width)
+            caps.append(cap)
+        return trimmed
+
     if kind == "line":
-        x, y = point(g["start"])
-        u, v = point(g["end"])
+        (x, y), (u, v) = capped_ends([point(g["start"]), point(g["end"])])
         drawing = f'<path d="M{x} {y} L{u} {v}" {attrs}/>'
     elif kind == "rectangle":
         drawing = f'<rect width="{g["widthPt"]}" height="{g["heightPt"]}" rx="{g["cornerRadiusPt"]}" {attrs}/>'
@@ -52,7 +90,9 @@ def draw_object(obj):
     else:
         knots = g["nodes"]
         positions = [point(knot["point"]) for knot in knots]
-        commands = ["M{} {}".format(*positions[0])]
+        ends = positions if g["closed"] else capped_ends(positions, knots[0].get("handleOut"),
+                                                         knots[-1].get("handleIn"))
+        commands = ["M{} {}".format(*ends[0])]
         for index in range(len(knots) if g["closed"] else len(knots)-1):
             successor = (index+1) % len(knots)
             start, end = positions[index], positions[successor]
@@ -60,13 +100,13 @@ def draw_object(obj):
             if outgoing or incoming:
                 a = plus(start, point(outgoing)) if outgoing else start
                 b = plus(end, point(incoming)) if incoming else end
-                commands.append("C{} {} {} {} {} {}".format(*a, *b, *end))
+                commands.append("C{} {} {} {} {} {}".format(*a, *b, *ends[successor]))
             else:
-                commands.append("L{} {}".format(*end))
+                commands.append("L{} {}".format(*ends[successor]))
         if g["closed"]:
             commands.append("Z")
         drawing = f'<path d="{" ".join(commands)}" {attrs}/>'
-    return group(drawing, obj["x"], obj["y"])
+    return group(f'<g opacity="{style.get("opacity", 1)}">{drawing}{"".join(caps)}</g>', obj["x"], obj["y"])
 
 
 def centered(start, end, spacing):

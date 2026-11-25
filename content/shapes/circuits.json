@@ -585,8 +585,8 @@
         },
         {
           "type": "shape",
-          "x": 22.0,
-          "y": 13.0,
+          "x": 22,
+          "y": 13,
           "geometry": {
             "kind": "line",
             "start": {
@@ -594,46 +594,18 @@
               "y": 0
             },
             "end": {
-              "x": 9.0,
-              "y": -9.0
+              "x": 9,
+              "y": -9
             }
           },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
-          "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 26.0,
-                  "y": 4.0
-                }
-              },
-              {
-                "point": {
-                  "x": 31.0,
-                  "y": 4.0
-                }
-              },
-              {
-                "point": {
-                  "x": 31.0,
-                  "y": 9.0
-                }
-              }
-            ],
-            "closed": false
-          },
-          "style": {}
-        },
-        {
-          "type": "shape",
-          "x": 32.0,
-          "y": 14.0,
+          "x": 32,
+          "y": 14,
           "geometry": {
             "kind": "line",
             "start": {
@@ -641,41 +613,13 @@
               "y": 0
             },
             "end": {
-              "x": 9.0,
-              "y": -9.0
+              "x": 9,
+              "y": -9
             }
           },
-          "style": {}
-        },
-        {
-          "type": "shape",
-          "x": 0,
-          "y": 0,
-          "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 36.0,
-                  "y": 5.0
-                }
-              },
-              {
-                "point": {
-                  "x": 41.0,
-                  "y": 5.0
-                }
-              },
-              {
-                "point": {
-                  "x": 41.0,
-                  "y": 10.0
-                }
-              }
-            ],
-            "closed": false
-          },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
         }
       ],
       "ports": [
@@ -1076,8 +1020,8 @@
         },
         {
           "type": "shape",
-          "x": 16.0,
-          "y": 16.0,
+          "x": 16,
+          "y": 16,
           "geometry": {
             "kind": "line",
             "start": {
@@ -1085,41 +1029,13 @@
               "y": 0
             },
             "end": {
-              "x": 16.0,
-              "y": 0.0
+              "x": 16,
+              "y": 0
             }
           },
-          "style": {}
-        },
-        {
-          "type": "shape",
-          "x": 0,
-          "y": 0,
-          "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 27.0,
-                  "y": 12.0
-                }
-              },
-              {
-                "point": {
-                  "x": 32.0,
-                  "y": 16.0
-                }
-              },
-              {
-                "point": {
-                  "x": 27.0,
-                  "y": 20.0
-                }
-              }
-            ],
-            "closed": false
-          },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
         },
         {
           "type": "shape",
@@ -2180,8 +2096,8 @@
             "nodes": [
               {
                 "point": {
-                  "x": 17.0,
-                  "y": 28.0
+                  "x": 30.0,
+                  "y": 35.0
                 }
               },
               {
@@ -2203,33 +2119,22 @@
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
+          "x": 17,
+          "y": 28,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 24.0,
-                  "y": 27.0
-                }
-              },
-              {
-                "point": {
-                  "x": 30.0,
-                  "y": 35.0
-                }
-              },
-              {
-                "point": {
-                  "x": 20.0,
-                  "y": 34.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 13,
+              "y": 7
+            }
           },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
         },
         {
           "type": "shape",
@@ -2261,7 +2166,7 @@
     {
       "id": "pnp",
       "label": "pnp",
-      "search": "pnp-search",
+      "search": "npn-search",
       "widthPt": 48,
       "heightPt": 48,
       "objects": [
@@ -2331,63 +2236,56 @@
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
+          "x": 17.0,
+          "y": 28.0,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 17.0,
-                  "y": 28.0
-                }
-              },
-              {
-                "point": {
-                  "x": 32.0,
-                  "y": 36.0
-                }
-              },
-              {
-                "point": {
-                  "x": 32.0,
-                  "y": 48.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 2.0,
+              "y": 1.0
+            }
           },
           "style": {}
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
+          "x": 32.0,
+          "y": 36.0,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 24.0,
-                  "y": 37.0
-                }
-              },
-              {
-                "point": {
-                  "x": 19.0,
-                  "y": 29.0
-                }
-              },
-              {
-                "point": {
-                  "x": 29.0,
-                  "y": 30.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": 12.0
+            }
           },
           "style": {}
+        },
+        {
+          "type": "shape",
+          "x": 32,
+          "y": 36,
+          "geometry": {
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -13,
+              "y": -7
+            }
+          },
+          "style": {
+            "endCap": "open"
+          }
         },
         {
           "type": "shape",
@@ -2570,63 +2468,39 @@
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
+          "x": 32.0,
+          "y": 34.0,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 32.0,
-                  "y": 34.0
-                }
-              },
-              {
-                "point": {
-                  "x": 32.0,
-                  "y": 24.0
-                }
-              },
-              {
-                "point": {
-                  "x": 21.0,
-                  "y": 24.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": 0.0,
+              "y": -10.0
+            }
           },
           "style": {}
         },
         {
           "type": "shape",
-          "x": 0,
-          "y": 0,
+          "x": 32,
+          "y": 24,
           "geometry": {
-            "kind": "spline",
-            "nodes": [
-              {
-                "point": {
-                  "x": 25.0,
-                  "y": 21.0
-                }
-              },
-              {
-                "point": {
-                  "x": 21.0,
-                  "y": 24.0
-                }
-              },
-              {
-                "point": {
-                  "x": 25.0,
-                  "y": 27.0
-                }
-              }
-            ],
-            "closed": false
+            "kind": "line",
+            "start": {
+              "x": 0,
+              "y": 0
+            },
+            "end": {
+              "x": -11,
+              "y": 0
+            }
           },
-          "style": {}
+          "style": {
+            "endCap": "open"
+          }
         }
       ],
       "ports": [
