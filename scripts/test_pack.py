@@ -9,7 +9,7 @@ import unittest
 from zipfile import ZipFile
 
 from package import package
-from validate import shape_object, validate
+from validate import shape_object, validate, validate_stretch
 
 
 class ValidationTests(unittest.TestCase):
@@ -62,10 +62,41 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid number"):
             validate(self.root, report=False)
 
+    def test_two_port_items_have_stretch_and_native_arrows_use_line_ports(self):
+        declared = []
+        native = {"flow-arrow", "double-arrow", "force-arrow"}
+        for path in self.manifest["contents"]["shapes"]:
+            items = json.loads((self.root / path).read_text(encoding="utf-8"))["items"]
+            for item in items:
+                if len(item.get("ports", [])) == 2:
+                    validate_stretch(item)
+                    declared.append(item["id"])
+                if item["id"] in native:
+                    native.remove(item["id"])
+                    self.assertNotIn("ports", item)
+                    self.assertNotIn("stretch", item)
+                    self.assertEqual(item["objects"][0]["geometry"]["kind"], "line")
+        self.assertEqual(len(declared), 21)
+        self.assertFalse(native)
+
+    def test_stretch_rejects_bad_axis_roles_sockets_and_floors(self):
+        path = next(path for path in self.manifest["contents"]["shapes"] if path.endswith("circuits.json"))
+        data = json.loads((self.root / path).read_text(encoding="utf-8"))
+        item = next(item for item in data["items"] if item["id"] == "resistor")
+        original = item["stretch"]
+        for change in ({"axis": [1, 0]}, {"axis": [False, 1]}, {"roles": ["body"]},
+                       {"mode": "span"}, {"leadFloors": [100, 4]}, {"virtualSockets": [12, 36]}):
+            with self.subTest(change=change):
+                item["stretch"] = original | change
+                self.save(path, data)
+                with self.assertRaises(ValueError):
+                    validate(self.root, report=False)
+
     def test_item_ports_accept_stroke_allowance_and_reject_invalid_values(self):
         path = self.manifest["contents"]["shapes"][0]
         data = json.loads((self.root / path).read_text(encoding="utf-8"))
         item = data["items"][0]
+        item.pop("stretch", None)
         item["ports"] = [{"x": -0.5, "y": 12}]
         self.save(path, data)
         validate(self.root, report=False)

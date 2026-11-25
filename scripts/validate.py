@@ -155,6 +155,74 @@ def shape_object(obj, w, h):
                 "Shape caps require a line or an open spline")
 
 
+def validate_stretch(item):
+    rule = item["stretch"]
+    keys(rule, "axis mode roles", "leadFloors virtualSockets")
+    axis = seq(rule["axis"], 2, 2)
+    require(all(type(index) is int for index in axis) and sorted(axis) == [0, 1],
+            "Invalid stretch axis")
+    a, b = [point(seq(item.get("ports"), 2, 2)[index]) for index in axis]
+    for x, y in (a, b):
+        number(x, 0, item["widthPt"])
+        number(y, 0, item["heightPt"])
+    require(a[1] == b[1] and b[0] - a[0] > 1e-6, "Stretch ports must run left to right")
+    objects = item["objects"]
+    roles = seq(rule["roles"], len(objects), len(objects))
+    require(all(obj["type"] == "shape" for obj in objects), "Stretch parts must be shapes")
+
+    def close(first, second):
+        return all(abs(x - y) <= 1e-6 for x, y in zip(first, second))
+
+    def ends(obj, span=False):
+        g = obj["geometry"]
+        if g["kind"] == "line":
+            ends = [point(g[key]) for key in ("start", "end")]
+        elif span and g["kind"] == "spline" and not g["closed"]:
+            ends = [point(g["nodes"][i]["point"]) for i in (0, -1)]
+        elif span and g["kind"] == "rectangle" and g["cornerRadiusPt"] == 0:
+            ends = [(0, g["heightPt"]/2), (g["widthPt"], g["heightPt"]/2)]
+        else:
+            raise ValueError("Invalid stretch geometry")
+        return [plus((obj["x"], obj["y"]), end) for end in ends]
+
+    def opposite(pair, port):
+        first, second = pair
+        if close(first, port):
+            return second
+        require(close(second, port), "Stretch line must meet its port")
+        return first
+
+    length = b[0] - a[0]
+    if rule["mode"] == "span":
+        require(set(rule) == {"axis", "mode", "roles"} and all(role == "span" for role in roles)
+                and length >= 4, "Invalid span stretch limits or roles")
+        segments = [ends(obj, span=True) for obj in objects]
+        require(any(close(opposite(segment, a), b) for segment in segments
+                    if any(close(endpoint, a) for endpoint in segment)), "Missing full-axis span")
+        return
+
+    require(rule["mode"] == "fixedBody" and "body" in roles
+            and all(role in ("body", "startLead", "endLead", "throughLine") for role in roles),
+            "Invalid fixed-body stretch roles")
+    floors = [positive(value) for value in seq(rule.get("leadFloors", [4, 4]), 2, 2)]
+    through = roles.count("throughLine")
+    if through:
+        require(through == 1 and close(opposite(ends(objects[roles.index("throughLine")]), a), b),
+                "Invalid full-axis through-line")
+    leads = (roles.count("startLead"), roles.count("endLead"))
+    if "virtualSockets" in rule:
+        require(leads == (0, 0) and through == 1, "Virtual sockets require a through-line without leads")
+        left, right = map(number, seq(rule["virtualSockets"], 2, 2))
+    else:
+        require(leads == (1, 1), "Fixed body requires both leads")
+        sockets = [opposite(ends(objects[roles.index(role)]), port)
+                   for role, port in zip(("startLead", "endLead"), (a, b))]
+        require(all(abs(socket[1] - a[1]) <= 1e-6 for socket in sockets), "Stretch lead is off axis")
+        left, right = [socket[0] - a[0] for socket in sockets]
+    require(left < right and left >= floors[0] - 1e-6 and length - right >= floors[1] - 1e-6,
+            "Stretch sockets violate lead floors")
+
+
 def template(value, prefix):
     keys(value, "id name backgroundColor elements")
     key = value["id"]
@@ -253,7 +321,7 @@ def validate(root=ROOT, *, report=True):
                     counts["libraries"] += 1
                     item_ids = set()
                     for item in seq(data["items"], 1, 512):
-                        keys(item, "id label search widthPt heightPt objects", "ports")
+                        keys(item, "id label search widthPt heightPt objects", "ports stretch")
                         add_id(item_ids, identifier(item["id"]))
                         label(item["label"])
                         label(item["search"])
@@ -266,6 +334,8 @@ def validate(root=ROOT, *, report=True):
                             x, y = point(port)
                             number(x, -half_stroke, w + half_stroke)
                             number(y, -half_stroke, h + half_stroke)
+                        if "stretch" in item:
+                            validate_stretch(item)
                         counts["shapes"] += 1
                 else:
                     keys(data, kind)

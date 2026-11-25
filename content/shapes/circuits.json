@@ -65,7 +65,19 @@
           "x": 48.0,
           "y": 12.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body"
+        ]
+      }
     },
     {
       "id": "capacitor",
@@ -152,7 +164,20 @@
           "x": 48.0,
           "y": 12.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "body",
+          "endLead"
+        ]
+      }
     },
     {
       "id": "polarized-capacitor",
@@ -288,7 +313,26 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "body",
+          "endLead",
+          "body",
+          "body"
+        ],
+        "leadFloors": [
+          12,
+          4
+        ]
+      }
     },
     {
       "id": "inductor",
@@ -393,7 +437,17 @@
           "x": 48.0,
           "y": 12.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "span",
+        "roles": [
+          "span"
+        ]
+      }
     },
     {
       "id": "diode",
@@ -493,7 +547,20 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "endLead",
+          "body"
+        ]
+      }
     },
     {
       "id": "led",
@@ -631,7 +698,22 @@
           "x": 48.0,
           "y": 24.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "body",
+          "endLead",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "zener",
@@ -750,7 +832,20 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "endLead",
+          "body"
+        ]
+      }
     },
     {
       "id": "dc-source",
@@ -865,7 +960,22 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body",
+          "body",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "ac-source",
@@ -975,7 +1085,20 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "current-source",
@@ -1058,7 +1181,20 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "battery",
@@ -1179,7 +1315,22 @@
           "x": 48.0,
           "y": 12.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "body",
+          "body",
+          "body",
+          "endLead"
+        ]
+      }
     },
     {
       "id": "ground",
@@ -1354,7 +1505,21 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "endLead",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "push-button",
@@ -1480,7 +1645,23 @@
           "x": 48.0,
           "y": 20.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body",
+          "body",
+          "body",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "lamp",
@@ -1578,7 +1759,21 @@
           "x": 48.0,
           "y": 16.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "endLead",
+          "body",
+          "body",
+          "body"
+        ]
+      }
     },
     {
       "id": "fuse",
@@ -1626,7 +1821,22 @@
           "x": 48.0,
           "y": 12.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "throughLine",
+          "body"
+        ],
+        "virtualSockets": [
+          12,
+          36
+        ]
+      }
     },
     {
       "id": "transformer",

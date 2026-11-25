@@ -506,16 +506,6 @@
             "endCap": "open"
           }
         }
-      ],
-      "ports": [
-        {
-          "x": 0,
-          "y": 12
-        },
-        {
-          "x": 48,
-          "y": 12
-        }
       ]
     },
     {
@@ -735,7 +725,23 @@
           "x": 56,
           "y": 32
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "span",
+        "roles": [
+          "span",
+          "span",
+          "span",
+          "span",
+          "span",
+          "span",
+          "span"
+        ]
+      }
     },
     {
       "id": "spring",
@@ -826,7 +832,17 @@
           "x": 56,
           "y": 12
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "span",
+        "roles": [
+          "span"
+        ]
+      }
     },
     {
       "id": "damper",
@@ -932,7 +948,20 @@
           "x": 56,
           "y": 12
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "body",
+          "endLead"
+        ]
+      }
     },
     {
       "id": "mass-block",
@@ -1191,7 +1220,17 @@
           "x": 56,
           "y": 12
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "span",
+        "roles": [
+          "span"
+        ]
+      }
     },
     {
       "id": "axes",
