@@ -280,7 +280,7 @@ def add_id(seen, identifier_value):
 def validate(root=ROOT, *, report=True):
     manifest_path = root / "goodtype-addon.json"
     m = load(manifest_path, 64 * 1024)
-    keys(m, "manifestVersion id version apiVersion target transport contents strings settings permissions commands")
+    keys(m, "manifestVersion id version apiVersion target transport contents strings settings permissions commands", "requires")
     addon_id = identifier(m["id"])
     require(type(m["manifestVersion"]) is int and m["manifestVersion"] == 1, "Expected manifest version 1")
     require(matches(m["version"], r"[0-9]+\.[0-9]+\.[0-9]+") and len(m["version"]) <= 32, "Invalid release version")

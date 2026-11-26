@@ -6,7 +6,7 @@ Engineering Shapes adds 62 editable circuit, logic, mechanics, flowchart and lab
 
 Install from Goodtype’s **Addons** page. See [what’s inside](ADDON.md).
 
-Pack version 0.2.0 requires Goodtype with shape end-cap support to display arrowheads.
+Pack version 0.2.0 declares `requires: ["end-caps", "group-stretch"]` in its manifest. Do not release it before a Goodtype host with P1 is published; released v0.3.x hosts reject this field.
 
 Licensed under [Apache 2.0](LICENSE).
 

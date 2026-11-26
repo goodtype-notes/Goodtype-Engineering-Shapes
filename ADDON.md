@@ -16,6 +16,6 @@ Install the pack from **Addons**, then open **Insert shape** on a page. Browse t
 
 When the Connectors addon is enabled, snap to component leads, flowchart edges and selected mechanical or laboratory attachment points.
 
-Arrowheads in version 0.2.0 follow the ends of their lines or curves when you move the handles. They require Goodtype with shape end-cap support.
+Arrowheads in version 0.2.0 follow the ends of their lines or curves when you move the handles. The manifest declares `requires: ["end-caps", "group-stretch"]`.
 
-Select a two-terminal symbol to stretch it from either port. Stretchable symbols require a Goodtype build with ADR 0049 support. Publish this pack only after that host is available.
+Select a two-terminal symbol to stretch it from either port. Do not release this 0.2 package before a Goodtype host with P1 is published; released v0.3.x hosts reject `requires`.

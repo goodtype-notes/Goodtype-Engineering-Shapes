@@ -1,0 +1,314 @@
+[
+  {
+    "name": "known",
+    "expected": "accepted",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": [
+        "end-caps",
+        "group-stretch",
+        "path-edit-v0"
+      ]
+    }
+  },
+  {
+    "name": "unknown",
+    "expected": "missing:future-feature",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": [
+        "future-feature"
+      ]
+    }
+  },
+  {
+    "name": "malformed",
+    "expected": "invalid",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": [
+        "bad feature"
+      ]
+    }
+  },
+  {
+    "name": "duplicate",
+    "expected": "invalid",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": [
+        "end-caps",
+        "end-caps"
+      ]
+    }
+  },
+  {
+    "name": "empty",
+    "expected": "accepted",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": []
+    }
+  },
+  {
+    "name": "too-many",
+    "expected": "invalid",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      },
+      "requires": [
+        "f0",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16"
+      ]
+    }
+  },
+  {
+    "name": "absent",
+    "expected": "accepted",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "onenote",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "entrypoint": "goodtype-onenote-import.exe",
+      "transport": "legacy-import-cli",
+      "permissions": [
+        "picked-import-file",
+        "publish-import-batch"
+      ],
+      "commands": [
+        {
+          "id": "import-notebooks",
+          "label": "run",
+          "surface": "library-import"
+        }
+      ],
+      "settings": [],
+      "strings": {
+        "en": {
+          "name": "OneNote Importer",
+          "run": "Import OneNote notebooks"
+        },
+        "de": {
+          "name": "OneNote-Import",
+          "run": "OneNote-Notizb\u00fccher importieren"
+        }
+      }
+    }
+  },
+  {
+    "name": "content-pack",
+    "expected": "accepted",
+    "manifest": {
+      "manifestVersion": 1,
+      "id": "engineering-shapes",
+      "version": "1.2.3",
+      "apiVersion": "goodtype-api 0.1",
+      "target": "x86_64-pc-windows-msvc",
+      "transport": "content",
+      "requires": [
+        "end-caps",
+        "group-stretch"
+      ],
+      "permissions": [],
+      "commands": [],
+      "settings": [],
+      "contents": {
+        "shapes": [
+          "content/shapes/symbols.json"
+        ]
+      },
+      "strings": {
+        "en": {
+          "name": "Shapes"
+        },
+        "de": {
+          "name": "Formen"
+        }
+      }
+    }
+  }
+]

@@ -313,6 +313,6 @@ for key, data in LIBRARIES.items():
     write(path, data)
     paths_written.append(path)
 
-write("goodtype-addon.json", dict(manifestVersion=1, id="engineering-shapes", version="0.2.0",
+write("goodtype-addon.json", dict(manifestVersion=1, requires=["end-caps", "group-stretch"], id="engineering-shapes", version="0.2.0",
     apiVersion="goodtype-api 0.1", target="x86_64-pc-windows-msvc", transport="content",
     permissions=[], commands=[], settings=[], contents={"shapes": paths_written}, strings=STRINGS))
