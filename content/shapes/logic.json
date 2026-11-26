@@ -939,7 +939,20 @@
           "x": 60.0,
           "y": 20.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "endLead",
+          "body"
+        ]
+      }
     },
     {
       "id": "buffer",
@@ -1022,7 +1035,19 @@
           "x": 60.0,
           "y": 20.0
         }
-      ]
+      ],
+      "stretch": {
+        "axis": [
+          0,
+          1
+        ],
+        "mode": "fixedBody",
+        "roles": [
+          "startLead",
+          "body",
+          "endLead"
+        ]
+      }
     },
     {
       "id": "d-flip-flop",

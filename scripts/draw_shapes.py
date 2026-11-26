@@ -13,8 +13,8 @@ def point(x, y):
 def shape(x, y, kind, style=None, **geometry):
     return dict(type="shape", x=x, y=y, geometry=dict(kind=kind, **geometry), style=style or {})
 
-def line(x, y, u, v):
-    return shape(x, y, "line", start=point(0, 0), end=point(u-x, v-y))
+def line(x, y, u, v, **caps):
+    return shape(x, y, "line", caps, start=point(0, 0), end=point(u-x, v-y))
 
 def rect(x, y, w, h, r=0):
     return shape(x, y, "rectangle", widthPt=w, heightPt=h, cornerRadiusPt=r)
@@ -22,7 +22,7 @@ def rect(x, y, w, h, r=0):
 def ellipse(x, y, w, h=None, fill=None):
     return shape(x, y, "ellipse", {"fillColor": fill} if fill else None, widthPt=w, heightPt=h or w)
 
-def paths(data):
+def paths(data, **caps):
     """Translate absolute M/L/C/Z drawing instructions into core-relative handles."""
     tokens = iter(re.findall(r"[MLCZ]|-?\d+(?:\.\d+)?", data))
     nodes = []
@@ -36,14 +36,14 @@ def paths(data):
 
     def flush(closed=False):
         if len(nodes) == 2 and not closed and all(len(node) == 1 for node in nodes):
-            result.append(line(*nodes[0]["point"].values(), *nodes[1]["point"].values()))
+            result.append(line(*nodes[0]["point"].values(), *nodes[1]["point"].values(), **caps))
         elif nodes:
             # A cubic may already end at its first knot. Keep the incoming tangent.
             if closed and nodes[-1]["point"] == nodes[0]["point"]:
                 last = nodes.pop()
                 if "handleIn" in last:
                     nodes[0]["handleIn"] = last["handleIn"]
-            result.append(shape(0, 0, "spline", nodes=list(nodes), closed=closed))
+            result.append(shape(0, 0, "spline", caps, nodes=list(nodes), closed=closed))
         nodes.clear()
 
     for command in tokens:
@@ -77,6 +77,12 @@ def add(key, en, de, search_en, search_de, w, h, drawing="", *objects):
     items.append(dict(id=key, label=key, search=search, widthPt=w, heightPt=h,
                       objects=paths(drawing) + list(objects)))
 
+def share_search(item_id, source_id):
+    item = next(item for item in items if item["id"] == item_id)
+    for catalog in STRINGS.values():
+        del catalog[item["search"]]
+    item["search"] = source_id + "-search"
+
 items = library("circuits", "Circuits", "Schaltungen")
 add("resistor", "Resistor", "Widerstand", "IEC ohm passive", "IEC Ohm Bauteil", 48, 24,
     "M0 12 L12 12 M36 12 L48 12", rect(12, 6, 24, 12))
@@ -90,8 +96,8 @@ diode = "M0 16 L16 16 M16 7 L32 16 L16 25 Z M32 16 L48 16"
 add("diode", "Diode", "Diode", "rectifier anode cathode", "Gleichrichter Anode Kathode", 48, 32,
     diode + " M32 7 L32 25")
 add("led", "LED", "Leuchtdiode", "light emitting diode", "LED Licht Halbleiter", 48, 36,
-    "M0 24 L16 24 M16 15 L32 24 L16 33 Z M32 15 L32 33 M32 24 L48 24 "
-    "M22 13 L31 4 M26 4 L31 4 L31 9 M32 14 L41 5 M36 5 L41 5 L41 10")
+    "M0 24 L16 24 M16 15 L32 24 L16 33 Z M32 15 L32 33 M32 24 L48 24",
+    line(22, 13, 31, 4, endCap="open"), line(32, 14, 41, 5, endCap="open"))
 add("zener", "Zener diode", "Z-Diode", "zener regulator breakdown", "Zenerdiode Spannungsstabilisierung Durchbruch", 48, 32,
     diode + " M36 7 L32 7 L32 25 L28 25")
 source = "M0 16 L12 16 M36 16 L48 16 "
@@ -100,7 +106,7 @@ add("dc-source", "DC voltage source", "Gleichspannungsquelle", "voltage supply D
 add("ac-source", "AC voltage source", "Wechselspannungsquelle", "sinusoidal voltage generator", "Wechselspannung Sinus Generator", 48, 32,
     source + "M16 16 C20 4 24 16 24 16 C24 16 28 28 32 16", ellipse(12, 4, 24))
 add("current-source", "Current source", "Stromquelle", "current supply arrow", "Konstantstrom Stromversorgung Pfeil", 48, 32,
-    source + "M16 16 L32 16 M27 12 L32 16 L27 20", ellipse(12, 4, 24))
+    source, line(16, 16, 32, 16, endCap="open"), ellipse(12, 4, 24))
 add("battery", "Battery", "Batterie", "cell DC supply", "Zelle Gleichspannung Versorgung", 48, 24,
     "M0 12 L12 12 M12 3 L12 21 M19 7 L19 17 M26 3 L26 21 M33 7 L33 17 M33 12 L48 12")
 add("ground", "Ground", "Masse", "GND earth reference", "GND Erdung Bezugspotenzial", 24, 24,
@@ -121,14 +127,18 @@ add("transformer", "Transformer", "Transformator", "coupled coils magnetic core"
 add("op-amp", "Operational amplifier", "Operationsverstärker", "op amp differential gain", "OPV OPAMP Differenzverstärker Verstärkung", 56, 48,
     "M0 12 L12 12 M0 36 L12 36 M12 3 L44 24 L12 45 Z M44 24 L56 24 "
     "M16 15 L22 15 M19 12 L19 18 M16 33 L22 33")
-transistor = "M0 24 L17 24 M17 13 L17 35 M17 20 L32 12 L32 0 M17 28 L32 36 L32 48 "
+transistor = "M0 24 L17 24 M17 13 L17 35 M17 20 L32 12 L32 0 "
 add("npn", "NPN transistor", "NPN-Transistor", "BJT bipolar emitter collector base", "Bipolartransistor Emitter Kollektor Basis", 48, 48,
-    transistor + "M24 27 L30 35 L20 34", ellipse(8, 6, 36))
+    transistor + "M30 35 L32 36 L32 48", line(17, 28, 30, 35, endCap="open"),
+    ellipse(8, 6, 36))
 add("pnp", "PNP transistor", "PNP-Transistor", "BJT bipolar emitter collector base", "Bipolartransistor Emitter Kollektor Basis", 48, 48,
-    transistor + "M24 37 L19 29 L29 30", ellipse(8, 6, 36))
+    transistor + "M17 28 L19 29 M32 36 L32 48", line(32, 36, 19, 29, endCap="open"),
+    ellipse(8, 6, 36))
+share_search("pnp", "npn")
 add("n-mosfet", "N-channel MOSFET", "N-Kanal-MOSFET", "NMOS enhancement field effect gate drain source", "NMOS Anreicherung Feldeffekttransistor Gate Drain Source", 48, 48,
     "M0 24 L14 24 M14 12 L14 36 M20 11 L20 18 M20 21 L20 27 M20 30 L20 37 "
-    "M20 14 L32 14 L32 0 M20 34 L32 34 L32 48 M32 34 L32 24 L21 24 M25 21 L21 24 L25 27")
+    "M20 14 L32 14 L32 0 M20 34 L32 34 L32 48 M32 34 L32 24",
+    line(32, 24, 21, 24, endCap="open"))
 add("junction", "Junction dot", "Verbindungspunkt", "node connected wires", "Knoten Leiter Kreuzung", 24, 24,
     "M0 12 L24 12 M12 0 L12 24", ellipse(9, 9, 6, fill="pen"))
 add("terminal", "Terminal", "Anschlussklemme", "open terminal pin connector", "Klemme Anschluss Pin", 32, 24,
@@ -175,11 +185,11 @@ add("roller-support", "Roller support", "Loslager", "rolling movable bearing", "
     "M24 0 L24 8 M24 8 L10 25 L38 25 Z M7 32 L41 32 " + hatches,
     *[ellipse(x, 25, 7) for x in (12,20.5,29)])
 add("force-arrow", "Force arrow", "Kraftpfeil", "load force vector", "Last Vektor Einzelkraft", 48, 24,
-    "M0 12 L48 12 M39 7 L48 12 L39 17")
+    "", line(0, 12, 48, 12, endCap="open"))
 add("moment-arrow", "Moment arrow", "Momentenpfeil", "torque curved rotation", "Drehmoment Rotation Biegemoment", 44, 40,
-    "M35 29 C44 14 32 4 22 4 C10 4 4 13 6 23 C8 31 14 36 22 36 M15 30 L22 36 L14 39")
+    "", *paths("M35 29 C44 14 32 4 22 4 C10 4 4 13 6 23 C8 31 14 36 22 36", endCap="open"))
 add("distributed-load", "Distributed load", "Streckenlast", "uniform load beam", "Gleichlast Linienlast Balken", 56, 36,
-    "M8 4 L48 4 M0 32 L56 32 " + " ".join(f"M{x} 4 L{x} 26 M{x-3} 22 L{x} 26 L{x+3} 22" for x in (8,18,28,38,48)))
+    "M8 4 L48 4 M0 32 L56 32", *[line(x, 4, x, 26, endCap="open") for x in (8,18,28,38,48)])
 add("spring", "Spring", "Feder", "linear stiffness elastic", "Schraubenfeder Steifigkeit elastisch", 56, 24,
     "M0 12 L10 12 L14 4 L20 20 L26 4 L32 20 L38 4 L44 20 L48 12 L56 12")
 add("damper", "Damper", "Dämpfer", "dashpot viscous piston", "Dämpfung Kolben Stoßdämpfer", 56, 24,
@@ -190,8 +200,11 @@ add("pulley", "Pulley", "Seilrolle", "sheave rope wheel", "Umlenkrolle Seil Flas
     "M24 0 L24 8 M8 24 L8 48 M40 24 L40 48", ellipse(8, 8, 32), ellipse(21,21,6))
 add("beam", "Beam", "Balken", "structural member bar", "Träger Stab Tragwerk", 56, 24, "", rect(0, 8, 56, 8))
 add("axes", "Coordinate axes", "Koordinatenachsen", "Cartesian XY directions origin", "kartesisch XY Ursprung Richtungen", 48, 48,
-    "M8 0 L8 40 L48 40 M4 7 L8 0 L12 7 M41 36 L48 40 L41 44 "
-    "M16 5 L19 10 M22 5 L17 14 M36 29 L42 35 M42 29 L36 35")
+    "M16 5 L19 10 M22 5 L17 14 M36 29 L42 35 M42 29 L36 35",
+    line(8, 40, 8, 0, endCap="open"), line(8, 40, 48, 40, endCap="open"))
+add("dimension-line", "Dimension line", "Maßlinie", "measurement drafting length extension lines",
+    "Bemaßung Länge Maßhilfslinien technische Zeichnung", 56, 24,
+    "M4 6 L4 21 M52 6 L52 21", line(4, 12, 52, 12, startCap="arrow", endCap="arrow"))
 
 items = library("flowchart", "Flowchart", "Flussdiagramm")
 add("process", "Process", "Prozess", "action step operation", "Aktion Schritt Verarbeitung", 64, 40, "", rect(2,2,60,36))
@@ -204,7 +217,11 @@ add("document", "Document", "Dokument", "report paper wavy edge", "Bericht Blatt
     "M3 3 L61 3 L61 32 C42 21 25 44 3 34 Z")
 add("connector", "Connector", "Konnektor", "continuation on page link", "Verbinder Fortsetzung Sprungmarke", 40, 40, "", ellipse(5,5,30))
 add("flow-arrow", "Flow arrow", "Ablaufpfeil", "transition direction edge", "Übergang Richtung Verbindung", 48, 24,
-    "M0 12 L48 12 M38 6 L48 12 L38 18")
+    "", line(0, 12, 48, 12, endCap="open"))
+add("double-arrow", "Double arrow", "Doppelpfeil", "transition direction edge connection",
+    "Übergang Richtung Verbindung", 48, 24, "", line(0, 12, 48, 12, startCap="arrow", endCap="arrow"))
+# Share closely related search terms to fit the host's 128 strings per locale.
+share_search("flow-arrow", "double-arrow")
 
 items = library("lab", "Laboratory", "Labor")
 add("beaker", "Beaker", "Becherglas", "graduated vessel glass liquid", "Messskala Glas Gefäß Flüssigkeit", 48, 56,
@@ -253,6 +270,7 @@ PORTS = {
     "document": [(32, 3), (61, 17.5), (33.125, 32.625), (3, 18.5)],
     "connector": [(20, 5), (35, 20), (20, 35), (5, 20)],
     "flow-arrow": [(0, 12), (48, 12)],
+    "double-arrow": [(0, 12), (48, 12)],
     "burette": [(16, 61)],
     "bunsen-burner": [(39, 50.5)],
 }
@@ -295,6 +313,6 @@ for key, data in LIBRARIES.items():
     write(path, data)
     paths_written.append(path)
 
-write("goodtype-addon.json", dict(manifestVersion=1, id="engineering-shapes", version="0.1.0",
+write("goodtype-addon.json", dict(manifestVersion=1, requires=["end-caps", "group-stretch"], id="engineering-shapes", version="0.2.0",
     apiVersion="goodtype-api 0.1", target="x86_64-pc-windows-msvc", transport="content",
     permissions=[], commands=[], settings=[], contents={"shapes": paths_written}, strings=STRINGS))
